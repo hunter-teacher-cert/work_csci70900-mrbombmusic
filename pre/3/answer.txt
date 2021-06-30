@@ -1,0 +1,14 @@
+1. No, I wug.
+   You wugga wug.
+   I wug.
+
+
+2. main - "No, I "
+   zoop -
+   baffle - "wug"
+   ping - "."
+
+
+   3. The program gets stuck in a recursive loop between baffle()
+   and ping(), printing out line after line of "wug." eventually resulting
+   in an error message.
