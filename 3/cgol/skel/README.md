@@ -7,6 +7,7 @@
 
 *Survivals:*
 - A cell with 2 or 3 living neighbours will survive for the next generation.<br>
+
 *Death:*
 
 - Each cell with >3 neighbours will die from overpopulation.
