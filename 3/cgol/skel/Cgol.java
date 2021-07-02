@@ -65,75 +65,37 @@ public class Cgol
 }
 
 
-  //return number of living neigbours of board[r][c]
-  // public static int countNeighbours(char[][] board, int r, int c) {
-  //     // conditional to check val of neighbor - "X" or " "
-  //     char val = board[r][c];
-  //     int sumCellValues = 0; // will accumulate state of cell - 1 = alive, 0 = dead
-  //     int rTemp = r; // creates temporary holder for r value
-  //     int cTemp = c; // creates temporary holder for c value
-  //     for(int rowOffset = -1; rowOffset < 2; rowOffset++) {
-  //       if(rTemp == 0){
-  //         rowOffset = 0;
-  //         rTemp++; // exits out of conditional
-  //         System.out.println("top border detected. r = " + rowOffset);
-  //       }
-  //        for(int cellOffset = -1; cellOffset < 2; cellOffset++) {
-  //          if(cTemp == 0){
-  //            cellOffset = 0;
-  //            cTemp++; // exits out of conditional
-  //            System.out.println("left border detected. c = " + cellOffset);
-  //          }
-  //          // System.out.println((r + rowOffset) + ", " + (c + cellOffset));
-  //           System.out.println(r + ", " + rowOffset + ", " + c + ", " + cellOffset);
-  //         if(rowOffset != 0 || cellOffset != 0) {// skip cell
-  //           if(board[r + rowOffset][c + cellOffset] == 'X') {
-  //             sumCellValues += 1;
-  //             // System.out.println("Your neighbor is alive!" + rowOffset + " " + cellOffset);
-  //           // } else {
-  //           //   System.out.println("Your neighbor is dead :(" + rowOffset + " " + cellOffset);
-  //           }
-  //        } // if skep cell
-  //       } // end cellOffset for
-  //     } // end rowOffset for
-  //     return sumCellValues;
-  // } // end method
   public static int countNeighbours(char[][] board, int r, int c) {
       // conditional to check val of neighbor - "X" or " "
       char val = board[r][c];
       int sumCellValues = 0; // will accumulate state of cell - 1 = alive, 0 = dead
-      int rTemp = r; // creates temporary holder for r value
-      int cTemp = c; // creates temporary holder for c value
       for(int rowOffset = -1; rowOffset < 2; rowOffset++) {
          for(int cellOffset = -1; cellOffset < 2; cellOffset++) {
           if(rowOffset != 0 || cellOffset != 0) {// skip cell
-            if(board[r + rowOffset][c + cellOffset] == 'X') {
-              sumCellValues += 1;
+              sumCellValues += isCellAlive(board,r + rowOffset, c + cellOffset);
               // System.out.println("Your neighbor is alive!" + rowOffset + " " + cellOffset);
             // } else {
             //   System.out.println("Your neighbor is dead :(" + rowOffset + " " + cellOffset);
-            }
+
          } // if skep cell
         } // end cellOffset for
       } // end rowOffset for
       return sumCellValues;
   } // end method
 
-  /*
 
-
-
-  if(r == 0) // top cell is border - dont check r - 1
-  if(r == board.length - 1)  // bottom cell is border dont check r + 1
-  if(c == 0) // left cell is border - dont check c - 1
-  if(c = board[r].length -1) // rightcell is border - dont check c + 1
-
-
-
-
-  */
-
-
+ // helper method to deal with out of bounds cells
+  public static int isCellAlive(char[][] board, int r, int c) {
+    if(r < 0 || r > board.length - 1) {
+      return 0;
+    } else if(c < 0 || c > board[r].length -1) {
+      return 0;
+    } else if(board[r][c] == 'X') {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
 
 
   /**
@@ -142,9 +104,19 @@ public class Cgol
      (alive 'X', dead ' ')
   */
   public static char getNextGenCell(char[][] board,int r, int c) {
-      return 0;
-  }
-
+//       int val = countNeighbours(board, r, c);
+//       char newVal
+//       // this happens when cell is alive
+//       if(val <= 1) {
+//       //  board[r][c] = ' ';
+//         return = ' ';
+//       } else if (val >= 4) {
+//       //  board[r][c] = ' ';
+//         return = ' ';
+//       } else if(val == 2 || val == 3)
+      return ' ';
+//   }
+}
 
   //generate new board representing next generation
   // public static char[][] generateNextBoard(char[][] board) {
