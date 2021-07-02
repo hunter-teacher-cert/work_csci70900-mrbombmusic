@@ -73,10 +73,6 @@ public class Cgol
          for(int cellOffset = -1; cellOffset < 2; cellOffset++) {
           if(rowOffset != 0 || cellOffset != 0) {// skip cell
               sumCellValues += isCellAlive(board,r + rowOffset, c + cellOffset);
-              // System.out.println("Your neighbor is alive!" + rowOffset + " " + cellOffset);
-            // } else {
-            //   System.out.println("Your neighbor is dead :(" + rowOffset + " " + cellOffset);
-
          } // if skep cell
         } // end cellOffset for
       } // end rowOffset for
@@ -97,12 +93,6 @@ public class Cgol
     }
   }
 
-
-  /**
-     precond: given a board and a cell
-     postcond: return next generation cell state based on CGOL rules
-     (alive 'X', dead ' ')
-  */
   public static char getNextGenCell(char[][] board,int r, int c) {
       int val = countNeighbours(board, r, c);
       char newVal = ' ';
@@ -145,45 +135,26 @@ public class Cgol
     board = createNewBoard(5,5);
 
     //breathe life into some cells:
-
-    setCell(board, 0, 0, 'X');
-    setCell(board, 0, 1, ' ');
-    setCell(board, 0, 2, ' ');
-    setCell(board, 1, 0, ' ');
-    setCell(board, 1, 1, 'X'); // checked cell
-    setCell(board, 1, 2, 'X');
-    setCell(board, 2, 0, ' ');
-    setCell(board, 2, 1, 'X');
-    setCell(board, 2, 2, 'X');
-    setCell(board, 0, 3, 'X');
-    setCell(board, 3, 2, 'X');
+    // setCell(board, 0, 0, 'X');
+    // setCell(board, 0, 1, ' ');
+    // setCell(board, 0, 2, ' ');
+    // setCell(board, 1, 0, ' ');
+    // setCell(board, 1, 1, 'X'); // checked cell
+    // setCell(board, 1, 2, 'X');
+    // setCell(board, 2, 0, ' ');
+    // setCell(board, 2, 1, 'X');
+    // setCell(board, 2, 2, 'X');
+    // setCell(board, 0, 3, 'X');
+    // setCell(board, 3, 2, 'X');
     // setCell(board, 1, 0, 'X');
 
-  //  printBoard(board);
-    // countNeighbours(board, 1, 1); // checking the cell to the right of 0, 0
-   // System.out.println(countNeighbours(board, 0, 1));
-   // System.out.println(board[0][0]);
-   // System.out.println("Cell new value: ");
-    // System.out.println(getNextGenCell(board, 0, 0));
-  //  System.out.println();
-
-    // TASK:
-    // Once your initial version is running,
-    // try out different starting configurations of living cells...
-    // (Feel free to comment out the above three lines.)
+    setBoard(board, 12);
     for(int generations = 0; generations < 5; generations++) {
     System.out.println("Gen " + (generations + 1) + ": ");
     printBoard(board);
     System.out.println("--------------------------\n\n");
     board = generateNextBoard(board);
-  }
-    // System.out.println("Gen X+1:");
-    // printBoard(board);
-    // System.out.println("--------------------------\n\n");
-    // board = generateNextBoard(board);
-    // System.out.println("Gen X+2:");
-    // printBoard(board);
-    // System.out.println("--------------------------\n\n");
+   }
 
   }//end main()
 
