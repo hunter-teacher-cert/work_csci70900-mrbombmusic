@@ -53,9 +53,13 @@ public class Cgol
   public static char[][] setBoard(char[][] board, int numCells) {
     Random randomRow = new Random();
     Random randomCell = new Random();
+    int row = randomRow.nextInt(board.length);
+    int cell = randomCell.nextInt(board[row].length);
       for(int liveCells = 0; liveCells < numCells; liveCells++) {
-        int row = randomRow.nextInt(board.length);
-        int cell = randomCell.nextInt(board[row].length);
+        while(board[row][cell] == 'X'){
+          row = randomRow.nextInt(board.length);
+          cell = randomCell.nextInt(board[row].length);
+        }
         board[row][cell] = 'X';
       }
     return board;
@@ -146,17 +150,28 @@ public class Cgol
     return board;
   }
 
+  public static boolean isBoardEmpty(char[][] board) {
+    for(int row = 0; row < board.length; row++) {
+      for(int cell = 0; cell < board[row].length; cell++){
+        if(board[row][cell] == 'X') {
+        return false;
+        }
+      }
+    }
+    return true;
+  }
+
   public static void main( String[] args )
   {
     char[][] board;
-    board = createNewBoard(9,9);
+    board = createNewBoard(5,5);
 
     //breathe life into some cells:
-    setCell(board, 4, 4, 'X');
-    setCell(board, 4, 3, 'X');
-    setCell(board, 4, 5, 'X');
-    setCell(board, 3, 4, 'X');
-    setCell(board, 5, 4, 'X'); // checked cell
+    // setCell(board, 4, 4, 'X');
+    // setCell(board, 4, 3, 'X');
+    // setCell(board, 4, 5, 'X');
+    // setCell(board, 3, 4, 'X');
+    // setCell(board, 5, 4, 'X'); // checked cell
     // setCell(board, 1, 2, 'X');
     // setCell(board, 2, 0, ' ');
     // setCell(board, 2, 1, 'X');
@@ -165,8 +180,13 @@ public class Cgol
     // setCell(board, 3, 2, 'X');
     // setCell(board, 1, 0, 'X');
 
-   for (int frame = 0; frame < 20; frame++) {
+    setBoard(board, 23);
+   for (int frame = 0; frame < 1; frame++) {
      board = animate(frame, board);
+     if(isBoardEmpty(board)) {
+       System.out.println("All your cells are dead (but life goes on)");
+       break;
+     }
    }
 
   }//end main()
