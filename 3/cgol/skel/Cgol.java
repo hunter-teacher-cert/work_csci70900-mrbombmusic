@@ -30,6 +30,8 @@ public class Cgol
 
 
   //print the board to the terminal
+
+  // maybe add grid system
   public static void printBoard(char[][] board) {
       for(int row = 0; row < board.length; row++) {
         for(int cell = 0; cell < board[row].length; cell++) {
@@ -64,17 +66,72 @@ public class Cgol
 
 
   //return number of living neigbours of board[r][c]
+  // public static int countNeighbours(char[][] board, int r, int c) {
+  //     // conditional to check val of neighbor - "X" or " "
+  //     char val = board[r][c];
+  //     int sumCellValues = 0; // will accumulate state of cell - 1 = alive, 0 = dead
+  //     int rTemp = r; // creates temporary holder for r value
+  //     int cTemp = c; // creates temporary holder for c value
+  //     for(int rowOffset = -1; rowOffset < 2; rowOffset++) {
+  //       if(rTemp == 0){
+  //         rowOffset = 0;
+  //         rTemp++; // exits out of conditional
+  //         System.out.println("top border detected. r = " + rowOffset);
+  //       }
+  //        for(int cellOffset = -1; cellOffset < 2; cellOffset++) {
+  //          if(cTemp == 0){
+  //            cellOffset = 0;
+  //            cTemp++; // exits out of conditional
+  //            System.out.println("left border detected. c = " + cellOffset);
+  //          }
+  //          // System.out.println((r + rowOffset) + ", " + (c + cellOffset));
+  //           System.out.println(r + ", " + rowOffset + ", " + c + ", " + cellOffset);
+  //         if(rowOffset != 0 || cellOffset != 0) {// skip cell
+  //           if(board[r + rowOffset][c + cellOffset] == 'X') {
+  //             sumCellValues += 1;
+  //             // System.out.println("Your neighbor is alive!" + rowOffset + " " + cellOffset);
+  //           // } else {
+  //           //   System.out.println("Your neighbor is dead :(" + rowOffset + " " + cellOffset);
+  //           }
+  //        } // if skep cell
+  //       } // end cellOffset for
+  //     } // end rowOffset for
+  //     return sumCellValues;
+  // } // end method
   public static int countNeighbours(char[][] board, int r, int c) {
       // conditional to check val of neighbor - "X" or " "
-      char val = board[r][c + 1]; // cell to the right
-      if(val == 'X') {
-        System.out.println("Your neighbor is alive!");
-        return 0;
-      } else {
-        System.out.println("Your neighbor is dead :(");
-        return 0;
-      }
-  }
+      char val = board[r][c];
+      int sumCellValues = 0; // will accumulate state of cell - 1 = alive, 0 = dead
+      int rTemp = r; // creates temporary holder for r value
+      int cTemp = c; // creates temporary holder for c value
+      for(int rowOffset = -1; rowOffset < 2; rowOffset++) {
+         for(int cellOffset = -1; cellOffset < 2; cellOffset++) {
+          if(rowOffset != 0 || cellOffset != 0) {// skip cell
+            if(board[r + rowOffset][c + cellOffset] == 'X') {
+              sumCellValues += 1;
+              // System.out.println("Your neighbor is alive!" + rowOffset + " " + cellOffset);
+            // } else {
+            //   System.out.println("Your neighbor is dead :(" + rowOffset + " " + cellOffset);
+            }
+         } // if skep cell
+        } // end cellOffset for
+      } // end rowOffset for
+      return sumCellValues;
+  } // end method
+
+  /*
+
+
+
+  if(r == 0) // top cell is border - dont check r - 1
+  if(r == board.length - 1)  // bottom cell is border dont check r + 1
+  if(c == 0) // left cell is border - dont check c - 1
+  if(c = board[r].length -1) // rightcell is border - dont check c + 1
+
+
+
+
+  */
 
 
 
@@ -103,11 +160,20 @@ public class Cgol
     //breathe life into some cells:
 
     setCell(board, 0, 0, 'X');
-   setCell(board, 0, 1, 'X');
+    setCell(board, 0, 1, 'X');
+    setCell(board, 0, 2, ' ');
+    setCell(board, 1, 0, 'X');
+    setCell(board, 1, 1, 'X'); // checked cell
+    setCell(board, 1, 2, 'X');
+    setCell(board, 2, 0, ' ');
+    setCell(board, 2, 1, 'X');
+    setCell(board, 2, 2, 'X');
     // setCell(board, 1, 0, 'X');
 
     printBoard(board);
-    countNeighbours(board, 0, 0);
+    // countNeighbours(board, 1, 1); // checking the cell to the right of 0, 0
+   // System.out.println(countNeighbours(board, 0, 1));
+    System.out.println(countNeighbours(board, 1, 0));
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     // TASK:
     // Once your initial version is running,
