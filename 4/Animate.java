@@ -33,7 +33,7 @@ public class Animate
     //clear screen, place cursor at origin (upper left)
     System.out.print("[0;0H\n"); // wipes terminal canvas clear - moves cursor back to 0, 0
 
-  //  System.out.println("we are aaanimaniacs " + n);
+   System.out.println("we are aaanimaniacs " + n);
 
     // After you have predicted/observed/reconciled
     // behavior of the preceding line,
@@ -42,9 +42,9 @@ public class Animate
     // re-apply your process.
 
     // /*
-    // for( int i=n; i > 0; i-- ) {
-      System.out.println("we are aaanimaniacs " + n);
-    // }
+     // for( int i=n; i > 0; i-- ) {
+     //  System.out.println("we are aaanimaniacs " + n);
+     // }
     // */
 
     delay(1000);
