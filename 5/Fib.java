@@ -29,7 +29,7 @@ public static int fib(int n) {
 }
 
 public static void main(String[] args) {
-  System.out.println("Return value = " + fib(2));
+  System.out.println("Return value = " + fib(8));
 
 }
 
