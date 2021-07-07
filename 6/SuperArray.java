@@ -34,21 +34,24 @@ public class SuperArray
   public SuperArray()
   {
     this.numberElements = 0;
-    this.data = new int[10];
+    this.data = new int[2];
   }
 
   // ~~~~~~~~~~~~~~~ METHODS ~~~~~~~~~~~~~~~
   // adds meaningful elements to the end of the array
   public void add( int value )
   {
+    
     // test to see if we need to grow, then grow
     // SIMPLE VERSION DOES NOT AUTO-GROW CAPACITY; INSERT MORE CODE HERE LATER
-    if(numberElements <= data.length) {
+    if(this.numberElements < this.data.length) {
     // add item
     this.data[this.numberElements] = value;
-
     // increment numberElements
     this.numberElements++;
+
+  } else {
+    grow();
   }
 
   }//end add()
@@ -56,6 +59,11 @@ public class SuperArray
   // getter for data array
   public int getDataElement(int index) {
     return this.data[index];
+  }
+
+ // getter for data
+  public int[] getData() {
+    return this.data;
   }
 
   // getter for numberElements
@@ -73,7 +81,13 @@ public class SuperArray
   // prints out element in format
   public String toString()
   {
-   return String.format("%d\n", this.data[this.numberElements]);
+    // prints value in data array at numberElements index
+    // issue - will usually print 0 since numberElements is incremented after using add
+    // what else should we be printing? What is most useful
+    // for(int i = 0; i < numberElements; i++) {
+    //
+    // }
+   return String.format(Arrays.toString(this.data));
   }//end toString()
   /*
 
@@ -99,16 +113,25 @@ public class SuperArray
   // }//end debug()
 
 
+  */
   private void grow()
   {
     // create a new array with extra space
     // Q: How did you decide how much to increase capacity by?
 
+    //
+    int[] newData = new int[this.numberElements*2];
     // copy over all the elements from the old array to the new one
 
+    for(int i = 0; i < this.numberElements; i++) {
+      newData[i] = this.data[i];
+    }
+
     // point data to the new array
+    this.data = newData;
+
+  //  System.out.println(this.data.length);
     // Q: How does this look when illustrated using encapsulation diagram?
 
   }//end grow()
-*/
 }//end class

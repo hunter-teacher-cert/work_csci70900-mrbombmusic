@@ -14,10 +14,20 @@ public class SuperArrayDriver
     System.out.println(sa.isEmpty());
 
     sa.add(8); // adding 8 to first index of array
+    sa.add(7);
+    sa.add(6); // this was skipped
+    sa.add(5);
     System.out.println("Testing add method");
     System.out.println(sa.getNumberElements()); // expect 1
     int i = sa.getNumberElements();
-    System.out.println("Data element = " + sa.getDataElement(i -1)); // expect 8
+    System.out.println("Data element = " + sa.getDataElement(i-1)); // expect 8
+    int[] dataCheck = sa.getData();
+    System.out.println(sa);
+    // System.out.println("Testing grow: ");
+    // System.out.printf("%d\n", dataCheck.length);
+    //
+    // System.out.println("Checking index value");
+    // System.out.printf("%d\n", sa.getDataElement(2)); // expect 5
     /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     // -----------------------------------------------------------
