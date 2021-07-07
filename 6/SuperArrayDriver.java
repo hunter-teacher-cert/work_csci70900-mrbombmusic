@@ -1,3 +1,14 @@
+/*
+Programming in a High Level Language
+7/7/21
+
+ encapsulation / SuperArray Lab
+ by
+ Liam Baum
+ Mr. H
+ Marina Moshchenko
+*/
+
 import java.io.*;
 import java.util.*;
 

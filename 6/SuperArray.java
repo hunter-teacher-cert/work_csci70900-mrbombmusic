@@ -1,6 +1,12 @@
 /**
-   lab skeleton
-   encapsulation / SuperArray
+  Programming in a High Level Language
+  7/7/21
+
+   encapsulation / SuperArray Lab
+   by
+   Liam Baum
+   Mr. H
+   Marina Moshchenko
 
    SuperArray is a wrapper class for an array.
    Provides "pass-thru" accessibility to array capabilities:
