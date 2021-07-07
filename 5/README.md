@@ -1,14 +1,14 @@
 
 # Programing in a High Level Language
 # In Class Work - 07/06/21
-# Fibinacci Recursion lab
+# Fibinacci Recursion lab && Time Class lab
 ## by
 ## Liam Baum
 ## Mamudu Wally
 ## Eduardo Leite
 
 
-**Notes**
+**Orignial Notes for Fibinacci Lab**
 
 0, 1, 1, 2, 3, 5, 8, 13, 21 (n = 8), 34, 55, 89 <br>
 

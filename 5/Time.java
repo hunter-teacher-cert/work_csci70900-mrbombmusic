@@ -34,6 +34,7 @@ public class Time {
     && this.minute == t.minute
     && this.second == t.second;
   }
+
   // method to add two Time objects together
   public Time add(Time t) {
     Time sumTime = new Time(); // initialized new Time object with default instance variables
@@ -42,10 +43,5 @@ public class Time {
     sumTime.second = this.second + t.second; // adds second of Object method is called on plus Oject used as argument and assigns sumTime object instance variable
     return sumTime; // returns new Time object with added instance variables from both objects
   }
-
-  // public int getHour() {
-  //   return this.hour;
-  // }
-
 
 }//end class
