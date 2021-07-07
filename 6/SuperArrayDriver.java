@@ -6,7 +6,7 @@ public class SuperArrayDriver
   public static void main( String[] args )
   {
     System.out.println("Testing default constructor.");
-    SuperArray sa = new SuperArray();
+    SuperArray sa = new SuperArray(8);
 
     System.out.println("Testing empty print:");
     System.out.println(sa);
@@ -17,12 +17,14 @@ public class SuperArrayDriver
     sa.add(7);
     sa.add(6); // this was skipped
     sa.add(5);
-    System.out.println("Testing add method");
-    System.out.println(sa.getNumberElements()); // expect 1
-    int i = sa.getNumberElements();
-    System.out.println("Data element = " + sa.getDataElement(i-1)); // expect 8
-    int[] dataCheck = sa.getData();
     System.out.println(sa);
+    sa.remove(0); // expect [8, 7, 5];
+    System.out.println(sa);
+    // System.out.println("Testing add method");
+    // System.out.println(sa.getNumberElements()); // expect 1
+    // int i = sa.getNumberElements();
+    // System.out.println("Data element = " + sa.getDataElement(i-1)); // expect 8
+    // int[] dataCheck = sa.getData();
     // System.out.println("Testing grow: ");
     // System.out.printf("%d\n", dataCheck.length);
     //

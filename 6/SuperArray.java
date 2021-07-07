@@ -41,7 +41,7 @@ public class SuperArray
   // adds meaningful elements to the end of the array
   public void add( int value )
   {
-    
+
     // test to see if we need to grow, then grow
     // SIMPLE VERSION DOES NOT AUTO-GROW CAPACITY; INSERT MORE CODE HERE LATER
     if(this.numberElements < this.data.length) {
@@ -51,10 +51,32 @@ public class SuperArray
     this.numberElements++;
 
   } else {
+    // change the size of the array
     grow();
+    // add new value to next index in new array size
+    this.data[this.numberElements] = value;
+    // increment numberElements
+    this.numberElements++;
   }
-
   }//end add()
+
+  // method to insert value at specifc index of array
+  public void insert(int value, int index) {
+
+    // check if array is big enough to hold one more value
+    if(this.numberElements + 1 >= this.data.length) {
+      // increase size of array
+      grow();
+
+    }
+    // shift all values after index to next spot
+    //
+    for(int i = numberElements; i > index; i--) {
+      this.data[i] = this.data[i +1];
+    }
+    // adds new value to index
+    this.data[index] = value;
+  }
 
   // getter for data array
   public int getDataElement(int index) {
@@ -89,6 +111,20 @@ public class SuperArray
     // }
    return String.format(Arrays.toString(this.data));
   }//end toString()
+
+  // method to remove a element from specifc index of array
+  public void remove(int index) {
+
+    // shift all values after index to previous spot
+    //
+    for(int i = index; i < this.numberElements - 1; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    this.data[this.numberElements - 1] = 0;
+    this.numberElements--;
+    // adds new value to index
+    //this.data[index] = value;
+  }
   /*
 
 
