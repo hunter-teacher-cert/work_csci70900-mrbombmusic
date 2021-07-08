@@ -7,10 +7,10 @@ public class Driver{
   public static void main(String[] args) {
 
     // make new object with default instance variables
-    SuperArray sa = new SuperArray();
+    SuperArray2 sa = new SuperArray2();
 
     // make new object with parameterized constructor
-    SuperArray saSpec = new SuperArray(3);
+    SuperArray2 saSpec = new SuperArray2(3);
 
     // print initialized objects - toString method automatically invoked
     System.out.println(sa); // array with 2 values - [0, 0]
@@ -49,13 +49,13 @@ public class Driver{
     System.out.println(saSpec); // [1, 2, 3, 4, 5]
     System.out.println("");
 
-    sa.insert(3, 1); // inserts 3 into index 1 of array
+    sa.add(3, 1); // inserts 3 into index 1 of array
     System.out.println(sa); // [8, 3, 4, 6]
     System.out.println("");
     sa.add(2); // adds 2 to the end of array
     System.out.println(sa); // [8, 3, 4, 6, 2]
     System.out.println("");
-    sa.insert(10, 3); // inserts 10 into index 3 of array
+    sa.add(10, 3); // inserts 10 into index 3 of array
     System.out.println(sa); // [8, 3, 4, 10, 6, 2]
     System.out.println("");
     sa.remove(2); // removes element from index 2

@@ -55,7 +55,6 @@ public class SuperArray
     this.data[this.numberElements] = value;
     // increment numberElements
     this.numberElements++;
-
   } else {
     // change the size of the array
     grow();
@@ -69,16 +68,17 @@ public class SuperArray
   // method to insert value at specifc index of array
   public void insert(int value, int index) {
     // check if array is big enough to hold one more value
-    if(this.numberElements + 1 >= this.data.length) {
+    if(this.numberElements == this.data.length) { // changed from if(this.numberElements + 1 >= this.data.length)
       // increase size of array
       grow();
     }
     // shift all values after index to next spot
     for(int i = numberElements; i > index; i--) {
-      this.data[i] = this.data[i  -1];
+      this.data[i] = this.data[i -1];
     }
     // adds new value to index
     this.data[index] = value;
+    this.numberElements++; // added - increment numberElements
   }
 
   // getter for data array
@@ -139,7 +139,7 @@ public class SuperArray
     // create a new array with extra space
     int[] newData = new int[this.numberElements*2];
     // copy over all the elements from the old array to the new one
-    for(int i = 0; i < this.numberElements; i++) {
+    for(int i = 0; i < this.data.length; i++) {
       newData[i] = this.data[i];
     }
     // point data to the new array

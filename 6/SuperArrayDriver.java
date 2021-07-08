@@ -58,10 +58,9 @@ public class SuperArrayDriver
     System.out.println("\nTesting add at index 5, 0 and 17(end)");
     sa.insert(100, 5);
     System.out.println(sa);
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    sa.add(0, 100);
+    sa.insert(100, 0);
     System.out.println(sa);
-    sa.add(17, 100);
+    sa.add(100);
     System.out.println(sa);
 
     System.out.println("\nTesting remove at 0, 5, and 15 (end)");
@@ -73,6 +72,7 @@ public class SuperArrayDriver
 
     sa.remove(15);
     System.out.println(sa);
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
   }//main
