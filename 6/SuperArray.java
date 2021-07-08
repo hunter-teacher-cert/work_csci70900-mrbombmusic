@@ -68,17 +68,14 @@ public class SuperArray
 
   // method to insert value at specifc index of array
   public void insert(int value, int index) {
-
     // check if array is big enough to hold one more value
     if(this.numberElements + 1 >= this.data.length) {
       // increase size of array
       grow();
-
     }
     // shift all values after index to next spot
-    //
     for(int i = numberElements; i > index; i--) {
-      this.data[i] = this.data[i +1];
+      this.data[i] = this.data[i  -1];
     }
     // adds new value to index
     this.data[index] = value;
@@ -106,15 +103,9 @@ public class SuperArray
    return numberElements == 0;
   }
 
-  // prints out element in format
+  // prints out array
   public String toString()
   {
-    // prints value in data array at numberElements index
-    // issue - will usually print 0 since numberElements is incremented after using add
-    // what else should we be printing? What is most useful
-    // for(int i = 0; i < numberElements; i++) {
-    //
-    // }
    return String.format(Arrays.toString(this.data));
   }//end toString()
 
@@ -122,24 +113,13 @@ public class SuperArray
   public void remove(int index) {
 
     // shift all values after index to previous spot
-    //
     for(int i = index; i < this.numberElements - 1; i++) {
       this.data[i] = this.data[i + 1];
     }
+    // adds non-meaning
     this.data[this.numberElements - 1] = 0;
     this.numberElements--;
-    // adds new value to index
-    //this.data[index] = value;
   }
-  /*
-
-
-  // public int get(int index)
-  // {
-  //
-  // }
-
-
 
   //helper method for debugging/development phase
   // public String debug()
@@ -154,26 +134,16 @@ public class SuperArray
   //   return s;
   // }//end debug()
 
-
-  */
   private void grow()
   {
     // create a new array with extra space
-    // Q: How did you decide how much to increase capacity by?
-
-    //
     int[] newData = new int[this.numberElements*2];
     // copy over all the elements from the old array to the new one
-
     for(int i = 0; i < this.numberElements; i++) {
       newData[i] = this.data[i];
     }
-
     // point data to the new array
     this.data = newData;
-
-  //  System.out.println(this.data.length);
-    // Q: How does this look when illustrated using encapsulation diagram?
 
   }//end grow()
 }//end class
