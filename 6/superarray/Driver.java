@@ -19,7 +19,7 @@ public class Driver{
     // checks isEmpty method - both should evaluate as true
     System.out.println(sa.isEmpty());
     System.out.println(saSpec.isEmpty());
-
+    System.out.println("");
     // checks add method one at a time
     // includes 3 add methods to test private grow method in class
     sa.add(8);
@@ -35,7 +35,11 @@ public class Driver{
     System.out.println(saSpec);
     System.out.println("");
 
-    // loop to check getLength & getValue getter methods and remove method in loop
+    // checks isEmpty method - both should evaluate as false
+    System.out.println(sa.isEmpty());
+    System.out.println(saSpec.isEmpty());
+    System.out.println("");
+    // loop to check getLength & getValue getter methods and remove method
     for(int i = 0; i < saSpec.getLength(); i++){
       if(saSpec.getValue(i) % 3 == 0) { // if element in array is divisible by 3...
         saSpec.remove(i); // ... remove value divisible by 3

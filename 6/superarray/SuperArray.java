@@ -41,16 +41,16 @@ public class SuperArray{
 
   // method to add value to array at specific index
   public void insert(int value, int index) {
-  // check to see that array is large enough to take one more value
-  if(this.numberElements == this.data.length) { // if array has no more space to hold new value...
-    grow(); // ...increase size of array
-  }
-  // loop through array starting at the end moving down to the index where new value will be added
-  for(int i = this.numberElements; i > index; i--) {
-    this.data[i] = this.data[i - 1]; // shift each value up by one index
-  }
-  this.data[index]= value; // insert value argument at specified index
-  this.numberElements++; // // increments number of meaningful elements in array
+    // check to see that array is large enough to take one more value
+    if(this.numberElements == this.data.length) { // if array has no more space to hold new value...
+      grow(); // ...increase size of array
+    }
+    // loop through array starting at the end moving down to the index where new value will be added
+    for(int i = this.numberElements; i > index; i--) {
+      this.data[i] = this.data[i - 1]; // shift each value up by one index
+    }
+    this.data[index]= value; // insert value argument at specified index
+    this.numberElements++; // // increments number of meaningful elements in array
   }
 
   // method to remove a value from array at specific index specified by argument
@@ -64,6 +64,7 @@ public class SuperArray{
     shrink(); // resizes array by removing non-meaningful elements from end of array
   }
 
+  // increases size of array to add additional meaningful elements
   private void grow(){
     // initializes new array that has one additional index space
     int[] newData = new int[this.numberElements + 1];
@@ -75,6 +76,7 @@ public class SuperArray{
     this.data = newData;
   }
 
+  // removes all non-meaningful elements from array and resizes array
   private void shrink() {
     // initializes new array the size of number of meaningful elements
     // this will be one less than the current size of array since numberElements is decremented prior to invoking shrink()
