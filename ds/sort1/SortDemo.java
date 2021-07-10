@@ -137,44 +137,45 @@ public class SortDemo{
 
     /* If you finish the lab early you can get started on this */
     public int binarySearch(int value){
-	boolean isValueEqualToMid = false;
-	int lowerIndex = 0;
-	int upperIndex = data.size();
-	int middleIndex = data.size()/2;
+      boolean didUpperCrossLower = false;
+      int lowerIndex = 0;
+      int upperIndex = data.size();
+      int middleIndex = data.size()/2;
 
+      /* if upper crosses lower it's not there and the loop should exit the loop
+      and if the item is at middle you should exit the loop
 
-  // is middleIndex == value - return value; -> exit loop
-  // if value is higher -> low == middle -> mid = hi - lo
-  // else if value is lower -> high == middle -> mid == mid/2
-
-
-
-	/* if upper crosses lower it's not there and the loop should exit the loop
-	   and if the item is at middle you should exit the loop
-
-           you have to replace the "replacethiswithrealexpression" boolean
-           with a correct expression based on lowerIndex and upperIndex
-	*/
-	while (!isValueEqualToMid)
-	    {
-		// update lower and upper.
-		// remember if value is less than data.get(middleIndex) you want to search next time
-		// from lower to the middle and otherwise from the middle to the upper.
-		//
-		// then update middleIndex based on new lowerIndex and upperIndex.
-      if(middleIndex == value) {
-        return value;
-      } else if (value > middleIndex) {
-        
+      you have to replace the "replacethiswithrealexpression" boolean
+      with a correct expression based on lowerIndex and upperIndex
+      */
+      while (!didUpperCrossLower)
+      {
+        // update lower and upper.
+        // remember if value is less than data.get(middleIndex) you want to search next time
+        // from lower to the middle and otherwise from the middle to the upper.
+        //
+        // then update middleIndex based on new lowerIndex and upperIndex.
+        if(value < data.get(middleIndex)) {
+          upperIndex = middleIndex - 1;
+          middleIndex = (upperIndex+lowerIndex)/2;
+        } else if (value > data.get(middleIndex)) {
+          lowerIndex = middleIndex + 1;
+          middleIndex = (upperIndex+lowerIndex)/2;
+        } else {
+          value = data.get(middleIndex);
+          didUpperCrossLower = true;
+        }
+        if(lowerIndex > upperIndex) {
+          value = -1;
+          didUpperCrossLower = true;
+        }
       }
-
-	    }
 
 	/* replace this return to either return the value if it was found and -1
 	   if upperIndex and lowerIndex crossed
 	*/
 
-	return 0; // replace this return
+	return value; // replace this return
     }
 
 

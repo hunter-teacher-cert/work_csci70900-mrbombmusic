@@ -5,10 +5,10 @@ public class SortDemoDriver {
     public static void main(String[] args) {
 
 	SortDemo sd = new SortDemo();
-	// System.out.println(sd);
+	System.out.println(sd);
 
-	// SortDemo sd2 = new SortDemo(20);
-	// System.out.println(sd2);
+	SortDemo sd2 = new SortDemo(20);
+	System.out.println(sd2);
 /*
 	int i;
 	i = sd.findSmallestIndex(5);
@@ -18,7 +18,9 @@ public class SortDemoDriver {
 	System.out.println("sd2["+ i +"] = "+sd2.get(i)+" : " + sd2);
   /* part 2 test lines */
   System.out.println(sd);
-  int foundIt = sd.linearSearch(8);
+  sd.sort();
+  System.out.println(sd);
+  int foundIt = sd.binarySearch(8);
   System.out.println(foundIt);
   /*
 	*/
