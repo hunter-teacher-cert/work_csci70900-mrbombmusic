@@ -92,14 +92,14 @@ public class SortDemo{
     public void sort(){
       int i; // declare variable for loop
       for (i=0;i < data.size()-1; i++){ // for loop to iterate through data
-        int currMinIndex = findSmallestIndex(i+1); // initializing variable to store current Minimum index
         // find the smallest index from i to end --use findSmallestIndex
         // your code here
-        if(data.get(currMinIndex) < data.get(i)) { // if value at currMinIndex is less than value at i.....
+        int currMinIndex = findSmallestIndex(i+1); // initializing variable to store current Minimum index
+
           // swap the item at that index and i
           // your code here
           swap(i, currMinIndex); // ... swap values in ArrayList indecies
-        }
+
 
       }
     }
@@ -148,7 +148,7 @@ public class SortDemo{
       you have to replace the "replacethiswithrealexpression" boolean
       with a correct expression based on lowerIndex and upperIndex
       */
-      while (!didUpperCrossLower)
+      while (!didUpperCrossLower) // lowerIndex <= upperIndex
       {
         // update lower and upper.
         // remember if value is less than data.get(middleIndex) you want to search next time

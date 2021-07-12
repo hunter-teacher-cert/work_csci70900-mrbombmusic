@@ -6,9 +6,9 @@ public class SortDemoDriver {
 
 	SortDemo sd = new SortDemo();
 	System.out.println(sd);
-
-	SortDemo sd2 = new SortDemo(20);
-	System.out.println(sd2);
+  //
+	// SortDemo sd2 = new SortDemo(20);
+	// System.out.println(sd2);
 /*
 	int i;
 	i = sd.findSmallestIndex(5);
