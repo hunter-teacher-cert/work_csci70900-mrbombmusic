@@ -31,25 +31,6 @@ done - add two Time objects and save the result in another Time object
 
 public class Driver {
 
-  // method to print instance variables of Time object
-  // Takes object as Parameter
-  // Issue arises when trying to print Object with value of null because no instance variables exist
-  public static void printTime(Time t) {
-    System.out.printf("Hour = %02d, Minute = %02d, Second = %04.1f\n", t.hour, t.minute, t.second);
-
-    // revised this method to use print format instead of individual println
-    // orignal code is below
-    /*
-    System.out.print("Hour = ");
-    System.out.println(t.hour);
-    System.out.print("Minute = ");
-    System.out.println(t.minute);
-    System.out.print("Second = ");
-    System.out.println(t.second);
-    */
-  }
-
-
   public static void main(String[] args) {
 
     //declare a var of appropriate type to assign an instance of Time to
@@ -81,11 +62,15 @@ public class Driver {
     // System.out.println(tNull.toString()); // cannot print out instance variables for object with value of null
     System.out.println(tCopy);
 
-    // #2 - print out using helper method - see comments above method for issue
-    // printTime(t);
-    // printTime(tSpec);
-    // printTime(tNull);
-    // printTime(tCopy);
+    // #2 - print out using helper method
+    // public static method means it is not an instance method and
+    // therefore will use general object Time.printTime() with specific object passed as argument
+    // instead of referencing specific object with dot notation (example. t.printTime());
+
+    Time.printTime(t);
+    Time.printTime(tSpec);
+    // printTime(tNull); // cannot print out instance variables for object with value of null
+    Time.printTime(tCopy);
     //
     // //  #3 - print out using println - a lot of print commands need to do this.
     // System.out.println("Here is Time object t: ");

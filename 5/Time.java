@@ -23,6 +23,26 @@ public class Time {
     this.second = second;
   }
 
+  // method to print instance variables of Time object
+  // Takes object as Parameter
+
+  // Issue arises when trying to print Object with value of null because no instance variables exist
+
+  public static void printTime(Time t) {
+    System.out.printf("Hour = %02d, Minute = %02d, Second = %04.1f\n", t.hour, t.minute, t.second);
+
+    // revised this method to use print format instead of individual println
+    // orignal code is below
+    /*
+    System.out.print("Hour = ");
+    System.out.println(t.hour);
+    System.out.print("Minute = ");
+    System.out.println(t.minute);
+    System.out.print("Second = ");
+    System.out.println(t.second);
+    */
+  }
+
   // method to print out instance variables of Object
   public String toString() {
     return String.format("hour = %02d, minute = %02d, second = %04.1f\n", this.hour, this.minute, this.second);
