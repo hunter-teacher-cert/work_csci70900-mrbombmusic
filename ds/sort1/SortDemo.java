@@ -65,14 +65,11 @@ public class SortDemo{
     public int findSmallestIndex(int start){
 	     int smallIndex = start; // set smallIndex to start argument value
 
-       int smallestValue=this.data.get(start); // set smallestValue to ArrayList value at start index
-
        for (int i= start + 1;i<this.data.size();i++) // loop starting at start value + 1 going to length of ArrayList
        {
-         if (this.data.get(i) < smallestValue) // if value in ArrayList at i index is less than current smallestValue...
-         {
-           smallestValue = this.data.get(i); //...set the smallest value to the value at index i
-           smallIndex = i; // set the smallest index to i
+         if (this.data.get(i) < this.data.get(smallIndex)) // if value in ArrayList at i index is less value at current smallIndex...
+         {        
+           smallIndex = i; // ...set the smallest index to i
          }
        }//for
 
@@ -95,12 +92,10 @@ public class SortDemo{
         // find the smallest index from i to end --use findSmallestIndex
         // your code here
         int currMinIndex = findSmallestIndex(i+1); // initializing variable to store current Minimum index
-
+                                                  //
           // swap the item at that index and i
           // your code here
           swap(i, currMinIndex); // ... swap values in ArrayList indecies
-
-
       }
     }
 
