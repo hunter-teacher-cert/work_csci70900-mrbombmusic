@@ -48,7 +48,7 @@ Provide specific code syntax for each example<br>
 ---
 
 ### Lesson Activity
-time: 15 minutes
+time: 15 minutes<br>
 Unplugged activity: Have 6-10 students stand up at the front of the classroom<br>
 Provide each student with a 8x11 sheet of paper with an integer written on in<br>
 Have the students stand in a line going from left to right, each holding up their number<br>
