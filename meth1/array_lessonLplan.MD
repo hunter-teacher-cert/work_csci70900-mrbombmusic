@@ -8,7 +8,7 @@
 - mathematic operators
 
 ### Warm up
-time: 5-8 minutes
+time: 5-8 minutes<br>
 Have 3 small receptacles (hats, buckets etc)<br>
 
 Explain each receptacles represents a variable where we will store an int value<br>
@@ -37,7 +37,7 @@ time: 8-10 minutes
 **Introduction to Array**<br>
 Start by front loading basic information about how to declare and initialize an array and array elements<br>
 Provide specific code syntax for each example<br>
-**important information**
+**important information**<br>
 - declare (using square brackets)
 - must include same type of primitives
 - Initializing array size
@@ -56,7 +56,7 @@ Inform the class that this line of students represents an array.<br>
 
 Prompt the rest of the class with questions about this array.<br>
 For some responses, students can come up to whiteboard and write down what code would look like<br>
-**possible questions**
+**possible questions**<br>
 How could we initialize this array?<br>
 Ask to locate certain values by index<br>
 Ask what is the index of certain values<br>
@@ -65,16 +65,16 @@ Ask students to write code for assigning new value to certain indices.<br>
 Student who correctly does this can take that spot in the line<br>
 
 Start posing question involving mathematic operations on different elements<br>
-a[4] = a[3] + 5;
-a[0] = a[5] - a[3];
-a[1] += 10;
+- a[4] = a[3] + 5;
+- a[0] = a[5] - a[3];
+- a[1] += 10;
 ---
 
 ### Assessment
 time: 5 minutes
 Provide with multiple question exit slip<br>
-**possible questions**
-Example array <br>
+**possible questions**<br>
+Example array: <br>
 a = [20, 30, 40, 50, 60, 70 ,80, 90, 100]<br>
 What is at index 6 of this array?<br>
 What is the index of 50 in this array?<br>
