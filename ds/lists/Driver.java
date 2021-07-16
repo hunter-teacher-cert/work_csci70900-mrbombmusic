@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Driver{
     public static void main(String[] args) {
+      // Demo by Z
 	// Node n;
 	// n = new Node();
 	// n.setData("Eduardo");
@@ -19,7 +20,8 @@ public class Driver{
 	// n.getNext().setNext(new Node("Steph"));
 	// System.out.println(n2.getNext());
 	// System.out.println(n.getNext().getNext());
-  /*
+
+  /* This work done with Peter Tsun and Marisa Laks
 	Node L; // initialize Node 1
 	// 1.Create a new  list that looks like:
 	//   L->"a"->"b"->"c"->"d"
@@ -41,15 +43,62 @@ public class Driver{
   // System.out.println(L2 + ", " + L2.getNext() + ", " + LX.getNext()); // prediction-  b, x, d
   */
 
-  Llist list = new Llist();
+  // Testing for Linked List methods with Chris & Marina
+  String[] data = {"e", "d", "c", "b", "a"};
+  Llist myList = new Llist();
+  boolean test = myList.isEmpty();
+  System.out.println("How many items? " + myList.length());
+  System.out.println("Is myList empty? " + test);
+  for (String datum: data){
+    myList.addFront(datum);
+    System.out.println(myList);
+  }
+
+  test = myList.isEmpty();
+  System.out.println("Is myList Empty? " + test);
+  System.out.println("How many items? " + myList.length());
+  String item = myList.get(0);
+  System.out.println("0th item is " + item);
+  item = myList.get(4);
+  System.out.println("4th item is " + item);
+  System.out.println("10th item is " + myList.get(10));
+
+  //test set() method, expect 'a->b->x->d->e->null'
+  int index = 2;
+  String value = "x";
+  //myList.set(index, value);
+  //test insert(), expect a->b->x ->c->d->e->null'
+ myList.insert(index,value);
+
+
+
+  System.out.println("list w/ x at 2: " + myList);
+  System.out.println("Length(): " + myList.length());
+  System.out.println("getSize(): " + myList.getSize());
+  myList.remove(2);
+  System.out.println("List after removing x:" + myList);
+  myList.remove(10);
+  System.out.println("Length(): " + myList.length());
+  System.out.println("getSize(): " + myList.getSize());
+
+// My own Linked List Testing for addFront & remove done independently
+/*
+  Llist2 list = new Llist2();
   System.out.println("1st list try: ");
   System.out.println(list);
+  System.out.println(list.isEmpty());
   list.addFront("d");
   list.addFront("chicken");
   list.addFront("banana");
   list.addFront("apple");
   System.out.println("2nd list try: ");
   System.out.println(list);
+  System.out.println(list.isEmpty());
+  list.remove(2);
+  System.out.println(list);
+  list.remove(15);
+  System.out.println(list);
+*/
 
 
     }
