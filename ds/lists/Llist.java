@@ -125,20 +125,25 @@ public class Llist{
   // You will need a variable that refers to
   // the node BEFORE you want to do the insertion.
   public void insert(int index, String value){
-    Node newNode = new Node(value);
-    Node currentNode; // initialize new node
-    int numItems = 0; // initialize counter variable
-    currentNode = front; // set currentNode to front (1st node)
-    while(currentNode != null) { // iterates through nodes in the list
-      if (numItems == index - 1){ // if/when counter variable reaches node before the requested index...
-        newNode.setNext(currentNode.getNext()); // ... point new Node at node one after current Node (one before specified index argument)
-        currentNode.setNext(newNode); // ... point current node to new node
-        break; // exit out of method
-      }//end if statement
-      numItems++;  // increments each time there is a new node
-      currentNode = currentNode.getNext();
-    } // end while
-    size++; // increment size instance variable
+    if(index == 0) { //...if index argument is 0
+      this.addFront(value); // ... create new node to the front of list with value argument
+    } else { // if
+      Node newNode = new Node(value);
+      Node currentNode = front;; // initialize new node & set currentNode to front (1st node)
+      int numItems = 0; // initialize counter variable
+      if(index < this.size) { // check if index argument is within the size of list
+        while(currentNode != null) { // iterates through nodes in the list
+          if (numItems == index - 1){ // if/when counter variable reaches node before the requested index...
+            newNode.setNext(currentNode.getNext()); // ... point new Node at node one after current Node (one before specified index argument)
+            currentNode.setNext(newNode); // ... point current node to new node
+            break; // exit out of method
+          }//end if statement
+          numItems++;  // increments each time there is a new node
+          currentNode = currentNode.getNext();
+          size++; // increment size instance variable
+        } // end while
+      }
+    } // end else
   } // end method
 
   // returns the index of the first item with
