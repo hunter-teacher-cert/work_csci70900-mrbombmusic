@@ -10,8 +10,11 @@ Mamudu Wally
 
 to start:
 break class into groups of 4
-each student has one sound
+Each group will make a musical pattern using 4 sounds (snap, clap, pat, stomp)
 each group comes up with a pattern using each sound one time.
+
+Example:
+clap, pat, snap, stomp
 
 Have each group perform their pattern.
 Then have class perform do that group's pattern.
@@ -69,6 +72,9 @@ Have each group create their own pattern using this form of referencing.
 
 Possible extensions/competitions:
 
-Each group creates pattern and gives to another group to figure out and perform.
-All students in group must perform correctly to receive credit/point.
+Each group creates pattern on piece of paper.
+Teacher gives randomly chosen pattern to another group to figure out and perform.
 Provide appropriate amount of time to prepare.
+Each group goes to front of class to perform.
+Group who made pattern checks for accuracy.
+All students in group must perform correctly to receive credit/point.
