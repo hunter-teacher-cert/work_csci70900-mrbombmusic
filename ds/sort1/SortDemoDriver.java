@@ -4,7 +4,8 @@ import java.util.*;
 public class SortDemoDriver {
     public static void main(String[] args) {
 
-	SortDemo sd = new SortDemo();
+	SortDemo2 sd = new SortDemo2();
+  /*
 	System.out.println(sd);
   //
 	SortDemo sd2 = new SortDemo(20);
@@ -22,11 +23,11 @@ public class SortDemoDriver {
   System.out.println(sd);
   int foundIt = sd.binarySearch(8);
   System.out.println(foundIt);
-  /*
 	*/
 
 	/* part 3 test lines */
 	/*
 	*/
+  sd.testMerge();
     }
 }
