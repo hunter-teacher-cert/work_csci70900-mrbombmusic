@@ -130,30 +130,31 @@ public class SortDemo2{
     int bIndex = 0; // initialize index counter for b list
     while(aIndex != a.size() && bIndex != b.size()) { // loops until we reach the end of one list
       //  System.out.println("aIndex: " + aIndex + ", bIndex: " + bIndex);
+/*
       if(a.get(aIndex) == b.get(bIndex)) { // if values are equal in both lists
         ab.add(a.get(aIndex)); // add value to merged list from list a
         ab.add(b.get(bIndex)); // add value to merged list from list b
         aIndex++; // increment a index counter
         bIndex++; // increment b index counter
       } else { // if values from each list are not equal
+        */
         if(a.get(aIndex) < b.get(bIndex)) { // if value from list a is less than value from list b....
           ab.add(a.get(aIndex)); // ... add value to merged list from list a
           aIndex++; // increment a index counter
         } else { // else if value from list b is less than value from list a...
           ab.add(b.get(bIndex)); // ...add value to merged list from list b
           bIndex++; // increment b index counter
-        } // end nested else
+        // } // end nested else
       } // end else
     } // end while
-    while(aIndex != bIndex) { // while one index counter has reached list size but other has not
-      if(aIndex < bIndex) { // if a index counter is not size of list...
+    while(aIndex < a.size()) { // if a index counter is not size of list...
         ab.add(a.get(aIndex)); // ... add values from a list until reach end of list
         aIndex++; // increments a index until end of list is reached
-      } else { // if b index counter is not size of list...
+      }
+      while(bIndex < b.size()) { // if b index counter is not size of list...
         ab.add(b.get(bIndex)); // ... add values from b list until reach end of list
         bIndex++; // // increments b index until end of list is reached
       } // end else
-    } // end while
     return ab; // return merged list
   } // end merge
 
@@ -164,12 +165,12 @@ public class SortDemo2{
     } else {
       int size = list.size();
       int half = size/2;
+
       ArrayList<Integer> a = new ArrayList<Integer>(list.subList(0, half));
       ArrayList<Integer> b = new ArrayList<Integer>(list.subList(half, size));
-      System.out.println(a);
-      System.out.println(b);
-      // mergeSort(a);
-      // mergeSort(b);
+
+      a = mergeSort(a);
+      b = mergeSort(b);
       return merge(a, b);
     }
 
@@ -178,11 +179,11 @@ public class SortDemo2{
 
   private ArrayList<Integer> fillForMerge(int size){
     ArrayList<Integer> a = new ArrayList<Integer>();
-    int lastVal = r.nextInt(10);
+    int lastVal = r.nextInt(100);
     for (int i = 0 ; i < size ; i=i+1){
       a.add(lastVal);
-      lastVal = lastVal + r.nextInt(10);
-      // lastVal = r.nextInt(100);
+      // lastVal = lastVal + r.nextInt(10);
+       lastVal = r.nextInt(100);
     }
     return a;
 
@@ -191,18 +192,12 @@ public class SortDemo2{
 
     ArrayList<Integer> a = new ArrayList<Integer>();
     ArrayList<Integer> b = new ArrayList<Integer>();
-    a = fillForMerge(10);
-    b = fillForMerge(10);
-    // System.out.println(a);
-    // System.out.println(a.subList(0, 10));
-    // ArrayList<Integer> split = mergeSort(a);
-    // System.out.println(split);
-    System.out.println(a);
-    System.out.println(b);
-    ArrayList<Integer> ab = merge(a, b);
-    System.out.println(ab.size());
-    System.out.println(ab);
-    
+    a = fillForMerge(19);
+
+    System.out.println("unsorted list: " + a);
+
+    ArrayList<Integer> msort = mergeSort(a);
+    System.out.println("sorted list: " + msort);
 
   }
 
