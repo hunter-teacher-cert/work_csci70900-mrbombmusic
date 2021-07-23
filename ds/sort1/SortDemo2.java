@@ -129,15 +129,6 @@ public class SortDemo2{
     int aIndex = 0; // initialize index counter for a list
     int bIndex = 0; // initialize index counter for b list
     while(aIndex != a.size() && bIndex != b.size()) { // loops until we reach the end of one list
-      //  System.out.println("aIndex: " + aIndex + ", bIndex: " + bIndex);
-/*
-      if(a.get(aIndex) == b.get(bIndex)) { // if values are equal in both lists
-        ab.add(a.get(aIndex)); // add value to merged list from list a
-        ab.add(b.get(bIndex)); // add value to merged list from list b
-        aIndex++; // increment a index counter
-        bIndex++; // increment b index counter
-      } else { // if values from each list are not equal
-        */
         if(a.get(aIndex) < b.get(bIndex)) { // if value from list a is less than value from list b....
           ab.add(a.get(aIndex)); // ... add value to merged list from list a
           aIndex++; // increment a index counter
