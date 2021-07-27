@@ -50,12 +50,12 @@ public class BSTree {
         current = current.getLeft();  // ... set current node to next node on left
       } // end conditional
     } // end while
-    // int newParent = previous.getData(); // initialize variable to hold value of parent node of inserted node
+
     if(key > previous.getData()){ // if key value is greater than parent node value...
       previous.setRight(new TreeNode(key)); // ... insert new node to the right of parent node
     } else { // if key value is less than parent node value...
       previous.setLeft(new TreeNode(key));  // ... insert new node to the left of parent node
-    } // end conditinal
+    } // end conditional
   }
   } // end inert method
 
@@ -106,8 +106,11 @@ public class BSTree {
 
   public void delete(int key) {
     TreeNode current = root;
+    // if(current.getData() == key) {
+    //   TreeNode prevRoot = new Node(key);
+    // } else {
     TreeNode previous = null;
-
+  // }
     // if tree is empty
     if(this.root ==null) {
       return;
@@ -139,7 +142,7 @@ public class BSTree {
       } else {
         previous.setRight(null);
       }
-    }
+    } // end leaf conditional
 
     // if value has one child - works
     if(current.getLeft() == null) { // if new child is to right of value to be deleted
@@ -156,9 +159,10 @@ public class BSTree {
       } else { // if value to be delted is right of previous value
         previous.setRight(newChild); // point previous node at new child on left
       }
-    }
+    } // end one child conditional
 
     // if value has 2 children
+    /*
     if(current.getLeft() != null && current.getRight() != null)  {
       TreeNode replacement = current.getLeft(); // set replacement node to left of node to be deleted
       while(replacement.getRight() != null) { // loop to go as far right as possible to find largest value in left subtree
@@ -167,7 +171,46 @@ public class BSTree {
       int replacementData = replacement.getData(); // variable to store value of replacement node
       this.delete(replacement.getData()); // delete replacement node
       current.setData(replacementData); // assigned value of replacement node to node containing value to be deleted
-    } // end if(current.getLeft() != null && current.getRight() != null)
+    } // end two child conditional
+    */
+    /*
+
+
+    */
+
+    if(current.getLeft() != null && current.getRight() != null)  {
+      TreeNode replacement = current.getLeft(); // set replacement node to left of node to be deleted
+      TreeNode prevReplace = null;
+
+      while(replacement.getRight() != null) { // loop to go as far right as possible to find largest value in left subtree
+        prevReplace = replacement;
+        replacement = replacement.getRight(); // set replacement to next node to the right
+
+      } // end while
+      if(prevReplace == null) {
+      replacement.setRight(current.getRight()); // set replacement node to right node of to be deleted node
+      previous.setLeft(replacement); // set previous node to replacement node
+      this.delete(current.getData()); // delete specified node
+    } else {
+      if(current.getData() > previous.getData()) {
+      replacement.setRight(current.getRight());
+      previous.setRight(prevReplace);
+      this.delete(current.getData());
+      replacement.setLeft(prevReplace);
+      prevReplace.setRight(null);
+      previous.setRight(replacement);
+    } else {
+      replacement.setRight(current.getRight());
+      previous.setLeft(prevReplace);
+      this.delete(current.getData());
+      replacement.setLeft(prevReplace);
+      prevReplace.setRight(null);
+      previous.setLeft(replacement);
+    }
+    }
+
+  }
+
 
   }
 
