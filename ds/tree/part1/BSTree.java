@@ -36,7 +36,7 @@ public class BSTree {
     // if true, inserts new node at root
     if(this.root == null) {
       this.root = new TreeNode(key);
-    }
+    } else {
 
     while (current != null){ // interate through tree until reaching end
       int currentValue = current.getData(); // initialize variable to hold current node data
@@ -50,12 +50,13 @@ public class BSTree {
         current = current.getLeft();  // ... set current node to next node on left
       } // end conditional
     } // end while
-    int newParent = previous.getData(); // initialize variable to hold value of parent node of inserted node
-    if(key > newParent){ // if key value is greater than parent node value...
+    // int newParent = previous.getData(); // initialize variable to hold value of parent node of inserted node
+    if(key > previous.getData()){ // if key value is greater than parent node value...
       previous.setRight(new TreeNode(key)); // ... insert new node to the right of parent node
     } else { // if key value is less than parent node value...
       previous.setLeft(new TreeNode(key));  // ... insert new node to the left of parent node
     } // end conditinal
+  }
   } // end inert method
 
   private void inOrderTraverse(TreeNode current) {
@@ -107,6 +108,7 @@ public class BSTree {
     TreeNode current = root;
     TreeNode previous = null;
 
+    // if tree is empty
     if(this.root ==null) {
       return;
     }
@@ -138,80 +140,60 @@ public class BSTree {
         previous.setRight(null);
       }
     }
+
     // if value has one child - works
-    int newParentValue = previous.getData(); // initialize variable for previous node value
     if(current.getLeft() == null) { // if new child is to right of value to be deleted
       TreeNode newChild = current.getRight(); // initialze variable for new child node
-      if(key < newParentValue) { // if value to be deleted is left of previous value
+      if(key < previous.getData() ) { // if value to be deleted is left of previous value
         previous.setLeft(newChild); // point previous node at new child on right
       } else { // if value to be delted is right of previous value
         previous.setRight(newChild); // point previous node at new child on left
       }
     } else if (current.getRight() == null) { // if new child is to left of value to be deleted
       TreeNode newChild = current.getLeft(); // initialze variable for new child node
-      if(key < newParentValue) { // if value to be deleted is left of previous value
+      if(key < previous.getData() ) { // if value to be deleted is left of previous value
         previous.setLeft(newChild); // point previous node at new child on right
       } else { // if value to be delted is right of previous value
         previous.setRight(newChild); // point previous node at new child on left
       }
     }
-    /*
+
     // if value has 2 children
     if(current.getLeft() != null && current.getRight() != null)  {
+      TreeNode replacement = current.getLeft(); // set replacement node to left of node to be deleted
+      while(replacement.getRight() != null) { // loop to go as far right as possible to find largest value in left subtree
+        replacement = replacement.getRight(); // set replacement to next node to the right
+      } // end while
+      int replacementData = replacement.getData(); // variable to store value of replacement node
+      this.delete(replacement.getData()); // delete replacement node
+      current.setData(replacementData); // assigned value of replacement node to node containing value to be deleted
+    } // end if(current.getLeft() != null && current.getRight() != null)
 
-        TreeNode replacement = current.getLeft();
-         TreeNode prevReplace = null;
-        while(replacement.getRight() != null) {
-          prevReplace = replacement;
-          replacement = replacement.getRight();
-        } // end while
-        System.out.println(replacement.getData() +", " + newParentValue);
-      // } // end if(current.getLeft() != null)
-      TreeNode newLeftChild = current.getLeft();
-      TreeNode newRightChild = current.getRight();
-      // replacement.setLeft(newLeftChild);
-      // replacement.setRight(newRightChild);
-      if(newParentValue < replacement.getData()) {
-      replacement.setRight(current.getRight());
-        previous.setRight(replacement);
-        // prevReplace.setLeft(null);
-        // replacement.setLeft(newLeftChild);
-        // current
-        // replacement.setLeft(current.getLeft());
-        System.out.println(replacement.getRight() + ", " + replacement.getLeft());
-
-      } else {
-        previous.setLeft(replacement);
-          System.out.println(replacement.getRight() + ", " + replacement.getLeft());
-      }
-
-    } // end if(current.getLeft() != null && current.getRight() != null)  {
-      */
   }
 
 
 
-public void seed(){
-  TreeNode t;
+    public void seed(){
+      TreeNode t;
 
-  t = new TreeNode(10);
-  root = t;
-  t = new TreeNode(5);
-  root.setLeft(t);
-  t = new TreeNode(20);
-  root.setRight(t);
+      t = new TreeNode(10);
+      root = t;
+      t = new TreeNode(5);
+      root.setLeft(t);
+      t = new TreeNode(20);
+      root.setRight(t);
 
-  root.getLeft().setRight( new TreeNode(8));
+      root.getLeft().setRight( new TreeNode(8));
 
-  t = new TreeNode(15);
-  root.getRight().setLeft(t);
-  // System.out.println(t.getData());
+      t = new TreeNode(15);
+      root.getRight().setLeft(t);
+      // System.out.println(t.getData());
 
-  t = new TreeNode(22);
-  root.getRight().setRight(t);
-
-
-}
+      t = new TreeNode(22);
+      root.getRight().setRight(t);
 
 
-}
+    }
+
+
+  }
