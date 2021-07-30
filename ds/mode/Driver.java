@@ -1,3 +1,15 @@
+/*
+Mode lab
+
+by
+Liam Baum
+Vicoria Berkowitz
+Dwayne Glevene
+
+*/
+
+
+
 import java.io.*;
 import java.util.*;
 
@@ -26,6 +38,8 @@ public class Driver{
 	// elapsed = System.currentTimeMillis() - start;
 	// System.out.println("Selection on size " + size + " : " + elapsed);
 
+  // runtime checks for both calcMode methods
+  // skipping over values that have already been checked greatly lessens runtim for large data sets
 	Mode m = new Mode(1000);
 	start = System.currentTimeMillis();
 	int m1 = m.calcMode1();

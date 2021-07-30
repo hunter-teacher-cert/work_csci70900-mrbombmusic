@@ -1,3 +1,13 @@
+/*
+Mode lab
+
+by
+Liam Baum
+Vicoria Berkowitz
+Dwayne Glevene
+
+*/
+
 import java.io.*;
 import java.util.*;
 
@@ -77,6 +87,7 @@ public class Mode{
   function will help you find a strategy for approaching finding the mode.
   */
 
+  // checks all values, even ones that have already been checked
   public int calcMode1(){
     // need a variable to freq value
     int freq = 0;
@@ -116,9 +127,6 @@ public int calcMode2(){
   }//end for
   return mode;
 } // end calcMode
-
-  // if checked.contains(valueAtIndex);
-  // i++
 
 
   public String toString(){
