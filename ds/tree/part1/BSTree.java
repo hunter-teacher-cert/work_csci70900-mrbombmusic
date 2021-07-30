@@ -106,11 +106,14 @@ public class BSTree {
 
   public void delete(int key) {
     TreeNode current = root;
-    // if(current.getData() == key) {
-    //   TreeNode prevRoot = new Node(key);
-    // } else {
     TreeNode previous = null;
-  // }
+    if(current.getData() == key) {
+    TreeNode tempRoot = new TreeNode(key - 1);
+    System.out.println("here");
+    previous = tempRoot;
+    System.out.println(previous.getData());
+    // previous.setRight(current);
+    }
     // if tree is empty
     if(this.root ==null) {
       return;
@@ -119,9 +122,7 @@ public class BSTree {
     // iterate through tree to get to value to be deleted
     while(current != null && current.getData() != key) {
       int  currentValue = current.getData();
-      if(currentValue == key) {
-        break;
-      } else if(currentValue < key ) {
+      if(currentValue < key ) {
         previous = current;
         current = current.getRight();
       } else {
@@ -161,8 +162,8 @@ public class BSTree {
       }
     } // end one child conditional
 
-    // if value has 2 children
-    /*
+    // if value has 2 children - replaces data in node meant to be deleted - works
+
     if(current.getLeft() != null && current.getRight() != null)  {
       TreeNode replacement = current.getLeft(); // set replacement node to left of node to be deleted
       while(replacement.getRight() != null) { // loop to go as far right as possible to find largest value in left subtree
@@ -172,11 +173,11 @@ public class BSTree {
       this.delete(replacement.getData()); // delete replacement node
       current.setData(replacementData); // assigned value of replacement node to node containing value to be deleted
     } // end two child conditional
-    */
+
     /*
+    // if value has two children - repointing method
+    // does not work for root or if replacement node has left child
 
-
-    */
 
     if(current.getLeft() != null && current.getRight() != null)  {
       TreeNode replacement = current.getLeft(); // set replacement node to left of node to be deleted
@@ -195,6 +196,7 @@ public class BSTree {
       if(current.getData() > previous.getData()) {
       replacement.setRight(current.getRight());
       previous.setRight(prevReplace);
+      // System.out.println("gonna print current > previous");
       this.delete(current.getData());
       replacement.setLeft(prevReplace);
       prevReplace.setRight(null);
@@ -202,17 +204,19 @@ public class BSTree {
     } else {
       replacement.setRight(current.getRight());
       previous.setLeft(prevReplace);
+      // System.out.println("gonna print current > previous");
       this.delete(current.getData());
-      replacement.setLeft(prevReplace);
-      prevReplace.setRight(null);
-      previous.setLeft(replacement);
+      // replacement.setLeft(prevReplace);
+      // prevReplace.setRight(null);
+      // previous.setLeft(replacement);
     }
     }
 
   }
+  */
 
 
-  }
+} // end delete
 
 
 
@@ -228,7 +232,7 @@ public class BSTree {
 
       root.getLeft().setRight( new TreeNode(8));
 
-      t = new TreeNode(15);
+      t = new TreeNode(14);
       root.getRight().setLeft(t);
       // System.out.println(t.getData());
 

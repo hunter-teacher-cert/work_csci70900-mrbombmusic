@@ -9,11 +9,13 @@ public class Driver {
       t.seed();
       int value;
     //
-    t.insert(3);
+    t.insert(2);
     t.insert(4);
 		t.insert(16);
     t.insert(23);
     t.insert(26);
+    t.insert(15);
+    t.insert(3);
     // Random r = new Random();
     // for(int i = 0; i < 16; i++) {
     //   t.insert(r.nextInt(8));
@@ -21,7 +23,7 @@ public class Driver {
 
     t.inOrderTraverse();
 
-    t.delete(26);
+    t.delete(5);
     t.inOrderTraverse();
     /*
     t.preOrderTraverse();
