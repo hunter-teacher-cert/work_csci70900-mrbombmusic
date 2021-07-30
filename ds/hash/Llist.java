@@ -46,7 +46,7 @@ public class Llist{
     // returns the number of items in the list
     // Hint: look at the toString
     // to remind you how to traverse down the list
-    /*
+
     public int length(){
       Node currentNode; // initialize new node
       int numItems = 0; // initialize counter variable
@@ -57,15 +57,15 @@ public class Llist{
       }
       return numItems; // return number of items in list;
     }
-    */
-    public int length() {
-      return listLength;
-    }
+
+    // public int length() {
+    //   return listLength;
+    // }
 
     // returns the item at location index;
     // returns null if there aren't enough
     // items. Starts with index 0
-    public String get(int index){
+    public String getKeyValue(int index){
       Node currentNode; // initialize new node
       int numItems = 0; // initialize counter variable
       currentNode = front; // set currentNode to front (1st node)
@@ -97,55 +97,13 @@ public class Llist{
 
     }//end get
 
-    // sets the item at location index (starting
-    // with 0) to value.
-    // only sets if the index is within range
-    /*
-    public void set(int index, String value){
-      // check to see  if index is in range using length
-      if(index >= this.length()){
-        System.out.println("Index " + index + " is not in this list.");
-      } else{
-        Node  currentVar = front; // initialize currentVar as the front node
-        int counter = 0; // initialize counter
-        while (counter!= index){ // while counter is less than the requested index....
-          counter++; //.. increment counter ...
-          currentVar = currentVar.getNext(); //... and move to next node in the list
-        }
-        currentVar.setData(value); // set the value at counter index to requested value argument
-      }
-      //
-    }
-
-    // insert an item before index.
-    // only inserts if the index is within bounds
-    // Hint: look at toString for hints on
-    // traversal and draw out a diagram.
-    // You will need a variable that refers to
-    // the node BEFORE you want to do the insertion.
-    public void insert(int index, String value){
-      Node newNode = new Node(value);
-      Node currentNode; // initialize new node
-      int numItems = 0; // initialize counter variable
-      currentNode = front; // set currentNode to front (1st node)
-      while(currentNode != null) { // iterates through nodes in the list
-        if (numItems == index - 1){ // if/when counter variable reaches node before the requested index...
-          newNode.setNext(currentNode.getNext()); // ... point new Node at node one after current Node (one before specified index argument)
-          currentNode.setNext(newNode); // ... point current node to new node
-          break; // exit out of method
-        }//end if statement
-        numItems++;  // increments each time there is a new node
-        currentNode = currentNode.getNext();
-      } // end while
-    } // end method
-    */
-
     // returns the index of the first item with
     // data value key. Returns -1 if not found
     public int search(String key){
       int index = 0;// initialize index counter
       while (index != this.length()){ // iterates through list until index counter reaches the length of list
-        if (this.get(index) == key){ // if value at index of list is same as key argument...
+        String keyValue = this.getKeyValue(index);
+        if(keyValue.equals(key)){ // if value at index of list is same as key argument...
           return index; //.. return the value of index counter and exit method
         }  //end if
         index++; // increment index

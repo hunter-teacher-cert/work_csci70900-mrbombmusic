@@ -19,16 +19,16 @@ public class Hash {
     this(8);
   }
 
-  // public int getArrayIndex(int n){
-  //   return hashArray[n];
-  // }
+  public Llist getList(int n){
+    return this.hashArray[n];
+  }
+
 
   private int hashFunc(String key){
     int sum = 0;
     for(int i = 0; i < key.length(); i++){
       sum += key.charAt(i) % 7;
     }
-    // return sum % this.hashArray.length;
     return sum;
   }
 
@@ -58,36 +58,37 @@ public class Hash {
     Llist l = this.hashArray[index];
     l.addFront(key, value, hashCode);
   }
-
-/*
   public boolean hasKey(String key){
     int hashCode = this.hashFunc(key);
     int index = this.hashIndex(hashCode);
     boolean isListEmpty = this.hashArray[index].isEmpty();
-    int listLength = this.hashArray[index].length();
-    // if list at
+    int counter = 0;
     if(isListEmpty) {
-      // System.out.println(this.hashArray[index].getNode(0).getKeyData() );
+      // System.out.println("List was empty");
       return false;
-    } else if (listLength == 1){
-      return key == this.hashArray[index].getNode(0).getValueData();
-    } else {
-
-
     }
+    while(counter != this.hashArray[index].length()) {
+      if(key.equals(this.hashArray[index].getNode(counter).getKeyData())) {
+        // System.out.println(key + "is in this table");
+        return true;
+      }
+      counter++;
+    }
+    // System.out.println(key + "was not in the list");
+    return false;
   }
-*/
+
 
   public String get(String key) {
     int hashCode = this.hashFunc(key);
     int index = this.hashIndex(hashCode);
     String value = "";
-    if(this.hashArray[index].length() == 1) {
-      value = this.hashArray[index].getNode(0).getValueData();
+    Llist list = this.hashArray[index];
+    if(list.length() == 1) {
+      value = list.getNode(0).getValueData();
     } else {
-      int listIndex = this.hashArray[index].search(key);
-      System.out.println(listIndex);
-      value = this.hashArray[index].getNode(listIndex).getValueData();
+      int listIndex = list.search(key);
+      value = list.getNode(listIndex).getValueData();
   }
     return value;
   }

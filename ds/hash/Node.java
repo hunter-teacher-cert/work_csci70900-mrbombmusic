@@ -57,17 +57,17 @@ public class Node {
     this.next = null;
   }
 
-  public void setKeyData(String keyData) {
-    key = keyData;
-  }//setData
-
+  // public void setKeyData(String keyData) {
+  //   key = keyData;
+  // }//setData
+  //
   public void setNext(Node n) {
     next = n;
   }//setNext
-
-  public void setValueData(String valueData){
-    value = valueData;
-  }
+  //
+  // public void setValueData(String valueData){
+  //   value = valueData;
+  // }
 
   public void setHash(int hashData) {
     hash = hashData;
