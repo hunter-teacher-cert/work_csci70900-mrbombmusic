@@ -180,43 +180,82 @@ public class SortDemo{
 
 }
 
-/*------------------------- MERGESORT STUFF -----------------*/
+//*------------------------- MERGESORT STUFF -----------------*/
+//Work with Eduardo
 
-
-    // Preconditions: a and b are ArrayLists of Integers and
-    //                both are in increasing order
-    // Return: a new ArrayList of Integers that is the result
-    //         of merging a and b. The new ArrayList
-    //         should be in increasing order
-    private ArrayList<Integer> merge(ArrayList<Interger> a,
-				     ArrayList<Integer> b){
-
-	return null;
+// Preconditions: a and b are ArrayLists of Integers and
+//                both are in increasing order
+// Return: a new ArrayList of Integers that is the result
+//         of merging a and b. The new ArrayList
+//         should be in increasing order
+private ArrayList<Integer> merge(ArrayList<Integer> a,
+ArrayList<Integer> b){
+  ArrayList<Integer> ab = new ArrayList<Integer>(); // initialize new arraylist to merge
+  int aIndex = 0; // initialize index counter for a list
+  int bIndex = 0; // initialize index counter for b list
+  while(aIndex != a.size() && bIndex != b.size()) { // loops until we reach the end of one list
+      if(a.get(aIndex) < b.get(bIndex)) { // if value from list a is less than value from list b....
+        ab.add(a.get(aIndex)); // ... add value to merged list from list a
+        aIndex++; // increment a index counter
+      } else { // else if value from list b is less than value from list a...
+        ab.add(b.get(bIndex)); // ...add value to merged list from list b
+        bIndex++; // increment b index counter
+      // } // end nested else
+    } // end else
+  } // end while
+  while(aIndex < a.size()) { // if a index counter is not size of list...
+      ab.add(a.get(aIndex)); // ... add values from a list until reach end of list
+      aIndex++; // increments a index until end of list is reached
     }
+    while(bIndex < b.size()) { // if b index counter is not size of list...
+      ab.add(b.get(bIndex)); // ... add values from b list until reach end of list
+      bIndex++; // // increments b index until end of list is reached
+    } // end else
+  return ab; // return merged list
+} // end merge
 
 
-    private ArrayList<Integer> fillForMerge(int size){
-	ArrayList<Integer> a = new ArrayList<Integer>();
-	int lastVal = r.nextInt(10);
-	for (int i = 0 ; i < size ; i=i+1){
-	    a.add(lastVal);
-	    lastVal = lastVal + r.nextInt(10);
-	}
-	return a;
+private ArrayList<Integer> mergeSort(ArrayList<Integer> list) {
+  if(list.size() < 2) {
+    return list;
+  } else {
+    int size = list.size();
+    int half = size/2;
+    // checked ArrayList documentation for using subList method
+    ArrayList<Integer> a = new ArrayList<Integer>(list.subList(0, half));
+    ArrayList<Integer> b = new ArrayList<Integer>(list.subList(half, size));
 
-    }
-    public void testMerge(){
-
-	ArrayList<Integer> a = new ArrayList<Integer>();
-	ArrayList<Integer> b = new ArrayList<Integer>();
-	a = fillForMerge(20);
-	b = fillForMerge(20);
-	System.out.println(a);
-	System.out.println(b);
+    a = mergeSort(a);
+    b = mergeSort(b);
+    return merge(a, b);
+  }
 
 
+}
 
-    }
+private ArrayList<Integer> fillForMerge(int size){
+  ArrayList<Integer> a = new ArrayList<Integer>();
+  int lastVal = r.nextInt(100);
+  for (int i = 0 ; i < size ; i=i+1){
+    a.add(lastVal);
+    // lastVal = lastVal + r.nextInt(10);
+     lastVal = r.nextInt(100);
+  }
+  return a;
+
+}
+public void testMerge(){
+
+  ArrayList<Integer> a = new ArrayList<Integer>();
+  ArrayList<Integer> b = new ArrayList<Integer>();
+  a = fillForMerge(19);
+
+  System.out.println("unsorted list: " + a);
+
+  ArrayList<Integer> msort = mergeSort(a);
+  System.out.println("sorted list: " + msort);
+
+}
 
 
 
