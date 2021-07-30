@@ -69,8 +69,10 @@ public class Driver{
   //myList.set(index, value);
   //test insert(), expect a->b->x ->c->d->e->null'
  myList.insert(index,value);
-
-
+int searchTest1 = myList.search("c");
+System.out.println("Found item at index " + searchTest1);
+int searchTest2 = myList.search("z");
+System.out.println(searchTest2);
 
   System.out.println("list w/ x at 2: " + myList);
   System.out.println("Length(): " + myList.length());
