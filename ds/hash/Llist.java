@@ -116,20 +116,29 @@ public class Llist{
     public void remove(int index){
       int counter = 0; // initialize counter variable
       Node currentNode = front; // initialize new node & set currentNode to front (1st node)
+      Node previous = null;
       if(index >= this.length()) {
         System.out.println("You cannot remove something from index: " + index + ". List is only " + this.length() + " nodes long.");
-      } else {
-      while(currentNode != null) { // iterates through nodes in the list
-      if (counter == index - 1){ // if/when counter variable reaches node before the requested index...
-          currentNode.setNext(currentNode.getNext().getNext()); // point node before specified index to node after tempnode(one past node we want to remove)
-          listLength--;
-          break; // since we have by passed the node at specified index, node will be removed and therefore we can exit the method
-        }
-        counter++;  // increments each time there is a new node
-        currentNode = currentNode.getNext(); // move to the next node in the list
-      }
-    }
-  }
+      } else if (index == 0){ // if node to be removed is only node in list...
+        this.front = null; //...set front to null, thereby bypassing node in list
+        listLength--; // decrement list size count
+        System.out.println("only node in list has been removed");
+        return; // exit method
+      } else { // if there is more than one node in list
+        while(currentNode != null) { // iterates through nodes in the list
+          if(index == counter){ // if specified index is equal to counter...
+            previous.setNext(currentNode.getNext()); // ...point node before specified index to node after node to be deleted
+            listLength--; // decrement list size count
+            System.out.println("node at index " + counter + "has been removed");
+            return; // exit method
+          }
+          counter++;  // increments each time there is a new node
+          previous = currentNode; // set piggybacked node to current
+          currentNode = currentNode.getNext(); // move to the next node in the list
+        } // end while
+      } // end else
+      System.out.println("no node was removed");
+    } // end remove
 
 
-}
+} // end class

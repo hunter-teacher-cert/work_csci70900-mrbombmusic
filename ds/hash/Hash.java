@@ -16,18 +16,28 @@ public class Hash {
 
   // constructor
   public Hash() {
-    this(8);
+    this(26);
   }
 
   public Llist getList(int n){
     return this.hashArray[n];
   }
 
+  public boolean isEmpty() {
+    int indexCounter = 0;
+    while(indexCounter < hashArray.length) {
+      if(hashArray[indexCounter].length() != 0) {
+        return false;
+      }
+      indexCounter++;
+    }
+    return true;
+  }
 
   private int hashFunc(String key){
     int sum = 0;
     for(int i = 0; i < key.length(); i++){
-      sum += key.charAt(i) % 7;
+      sum += key.charAt(i);
     }
     return sum;
   }
@@ -58,6 +68,8 @@ public class Hash {
     Llist l = this.hashArray[index];
     l.addFront(key, value, hashCode);
   }
+
+
   public boolean hasKey(String key){
     int hashCode = this.hashFunc(key);
     int index = this.hashIndex(hashCode);
@@ -91,6 +103,23 @@ public class Hash {
       value = list.getNode(listIndex).getValueData();
   }
     return value;
+  }
+
+  public void remove(String key) {
+    if(!this.hasKey(key)) {
+      System.out.println(key + "is not in this table");
+      return;
+    } else {
+      // locate key index
+      int hashCode = this.hashFunc(key);
+      int index = this.hashIndex(hashCode);
+      // Llist list = this.hashArray[index];
+      int listIndex = this.hashArray[index].search(key);
+      System.out.println("List index is: " + listIndex);
+      this.hashArray[index].remove(listIndex);
+      // remove node containing key
+      System.out.println(key + " has been removed");
+    }
   }
 
 
