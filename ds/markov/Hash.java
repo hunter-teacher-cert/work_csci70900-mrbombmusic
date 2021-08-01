@@ -37,7 +37,7 @@ public class Hash {
   private int hashFunc(String key){
     int sum = 0;
     for(int i = 0; i < key.length(); i++){
-      sum += key.charAt(i) % 7;
+      sum += key.charAt(i)*17*13;
     }
     return sum;
   }
@@ -69,10 +69,11 @@ public class Hash {
     if(this.hasKey(key)){
       int listIndex = list.search(key);
       list.getNode(listIndex).addValueData(value);
-    } else {
-    list.addFront(key, value, hashCode);
-  }
-  }
+    }  else {
+        list.addFront(key, value, hashCode);
+      }
+    }
+
 
 
   public boolean hasKey(String key){
@@ -118,11 +119,17 @@ public class Hash {
     Llist list = this.hashArray[index];
     Node valueNode = null;
     if(list.length() == 1) {
+      // System.out.println("List length was zero. Send array");
       valueNode = list.getNode(0);
-    } else {
+    }
+    while(valueNode == null) {
       int listIndex = list.search(key);
       valueNode = list.getNode(listIndex);
+      // System.out.println(valueNode.getHashData());
   }
+    // System.out.println("Here's the valueNode = " + valueNode.getKeyData());
+    // System.out.println(" next node = " + valueNode.getNext());
+    // System.out.println("node array = " + valueNode.getValueArray());
     return valueNode.getValueArray();
   }
 
