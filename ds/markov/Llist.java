@@ -10,6 +10,10 @@ public class Llist{
 	front = null;
     }
 
+    public Node getFront() {
+      return this.front;
+    }
+
     // Add a new node containing data
     // at the front of the list
     public void addFront(String key, String value, int hash){

@@ -62,10 +62,15 @@ public class Driver {
     }
      // System.out.println(h.getList(2).getNode(1).getHashData());
      // System.out.println(h.getList(22).getNode(0).getHashData());
+     // for(int i = 0; i < tableSize; i++){
+     //   // System.out.println("Index " + i + " = " + h.getList(i) + " ");
+     //   if(h.getList(i).isEmpty()) {
+     //     h.getList(i).remove(i);
+     //   }
+     //
+     // }
+     System.out.println(h.getArraySize());
      /*
-     for(int i = 0; i < tableSize; i++){
-       System.out.println("Index " + i + " = " + h.getList(i) + " ");
-     }
 
      */
     Random rand = new Random();
@@ -85,17 +90,22 @@ public class Driver {
     nextWord = generateWord(h, word);
     // System.out.println("Word = " + word + ", nextWord = " + nextWord);
      /*
-    if(word.equals("\n") && nextWord.equals("\n")) {
-    ArrayList<String> notNewLine = h.getList().search("\n");
-    System.out.println("Word that is not newLine is: " + notNewLine);
-  }
 
      */
-    word = nextWord;
+     char firstLetter = nextWord.charAt(0);
+     boolean addNewLine = false;
+     String n = "";
+     if(Character.isUpperCase(firstLetter)) {
+       n = "\n";
+       // System.out.println("Capital found");
+
+     }
+       word = nextWord;
+
     // System.out.println("Word returned by generate function is " + nextWord);
     // System.out.println("loop #" + i);
     // System.out.println();
-    newLyrics = newLyrics + word + " "; // add new word to lyric string
+    newLyrics = newLyrics + n + word + " "; // add new word to lyric string
     }
     System.out.println("");
     System.out.println(newLyrics);
@@ -104,24 +114,30 @@ public class Driver {
   }
 
   public static String generateWord(Hash h, String word) {
-    // System.out.println("generating word....." + word);
+    // System.out.println("genW - generating word....." + word);
     // char c = word.charAt(0);
     // int a = c;
-    // System.out.println("Ascii value of " + word + " = " + a);
-    ArrayList<String> nextWordChoices = h.getAllValues(word);
+    // System.out.println("genW - Ascii value of " + word + " = " + a);
+    ArrayList<String> nextWordChoices = h.getAllValues(word); // gets all values pairs of key word
     // while(nextWordChoices == null) {
-    //
-    // }
-     // System.out.println("next word is" + nextWordChoices);
-    Random r = new Random();
-    int randIndex = r.nextInt(nextWordChoices.size());
-    // System.out.println("size of next array is " + nextWordChoices.size());
-    while(nextWordChoices.get(randIndex).equals(null)){
-      randIndex = r.nextInt(nextWordChoices.size());
-    }
-    // System.out.println("The next word chosen is: " + nextWordChoices.get(randIndex));
-    String nextWord = nextWordChoices.get(randIndex);
 
+    // }
+     // System.out.println("genW - next word is" + nextWordChoices);
+    Random r = new Random();
+    int randIndex = r.nextInt(nextWordChoices.size()); // chooses random number within length of value pair arraylist
+    // System.out.println("genW - size of next array is " + nextWordChoices.size());
+
+    // System.out.println("The next word chosen is: " + nextWordChoices.get(randIndex));
+    randIndex = r.nextInt(nextWordChoices.size());
+    String nextWord = nextWordChoices.get(randIndex);
+/*
+    while(word.equals(nextWord)) {
+      System.out.println("genW - word = "+ word + ", next word = " + nextWord);
+      randIndex = r.nextInt(nextWordChoices.size());
+      nextWord = nextWordChoices.get(randIndex);
+    }
+    */
+    // System.out.println("genW - Successful run!");
     // System.out.println("");
     return nextWord;
   }

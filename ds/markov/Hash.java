@@ -23,6 +23,10 @@ public class Hash {
     return this.hashArray[n];
   }
 
+  public int getArraySize() {
+    return this.hashArray.length;
+  }
+
   public boolean isEmpty() {
     int indexCounter = 0;
     while(indexCounter < hashArray.length) {
@@ -112,8 +116,55 @@ public class Hash {
   }
 
   /*
-  */
+
   public ArrayList<String> getAllValues(String key) {
+    // System.out.println("gAV - get all values called");
+    int hashCode = this.hashFunc(key);
+    // System.out.println("gAV - hash code = " + hashCode);
+    int index = this.hashIndex(hashCode);
+
+    // if(index == 256) {
+    //   index = 501;
+    // }
+    // System.out.println("gAV - hash index = " + index);
+    Llist list = this.hashArray[index];
+    // System.out.println("gAV - List = " + list.toString());
+    // if(list.search("\n") == -1) {
+    //   System.out.println("gAV - Contains new line at index: " + list.search("n\""));
+    // }
+    Node valueNode = list.getFront();
+    if(list.length() == 1) {
+      // System.out.println("gAV - about to get node.....");
+      valueNode = list.getNode(0);
+      // System.out.println("gAV - List length was 1. Send array");
+    }
+    // System.out.println("gAV - about to get node hash data.....");
+
+    int counter = 0;
+    while(valueNode == null) {
+      // int listIndex = list.search(key);
+      if(counter < list.length()) {
+      // System.out.println("gAV - valueNode is currently null");
+      valueNode = valueNode.getNext();
+      if(valueNode != null) {
+        // System.out.println("gAV - Found node with value besides null");
+        break;
+      } else {
+      counter++;
+    }
+    } else {
+      // System.out.println("gAV - List only had null nodes");
+      break;
+    }
+  }
+  // System.out.println("gAV - Node had value besides null. hash data is: " + valueNode.getHashData());
+    // System.out.println("Here's the valueNode = " + valueNode.getKeyData());
+    // System.out.println(" next node = " + valueNode.getNext());
+    // System.out.println("node array = " + valueNode.getValueArray());
+    return valueNode.getValueArray();
+  }
+*/
+public ArrayList<String> getAllValues(String key) {
     int hashCode = this.hashFunc(key);
     int index = this.hashIndex(hashCode);
     Llist list = this.hashArray[index];
@@ -132,7 +183,6 @@ public class Hash {
     // System.out.println("node array = " + valueNode.getValueArray());
     return valueNode.getValueArray();
   }
-
 
   public void remove(String key) {
     if(!this.hasKey(key)) {
