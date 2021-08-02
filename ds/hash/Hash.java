@@ -92,17 +92,22 @@ public class Hash {
 
 
   public String get(String key) {
-    int hashCode = this.hashFunc(key);
-    int index = this.hashIndex(hashCode);
-    String value = "";
-    Llist list = this.hashArray[index];
-    if(list.length() == 1) {
-      value = list.getNode(0).getValueData();
+    if(!this.hasKey(key)) {
+      System.out.println(key + "is not in this table");
+      return null;
     } else {
-      int listIndex = list.search(key);
-      value = list.getNode(listIndex).getValueData();
-  }
-    return value;
+      int hashCode = this.hashFunc(key);
+      int index = this.hashIndex(hashCode);
+      String value = "";
+      Llist list = this.hashArray[index];
+      if(list.length() == 1) {
+        value = list.getNode(0).getValueData();
+      } else {
+        int listIndex = list.search(key);
+        value = list.getNode(listIndex).getValueData();
+      }
+      return value;
+    }
   }
 
   public void remove(String key) {
@@ -116,8 +121,8 @@ public class Hash {
       // Llist list = this.hashArray[index];
       int listIndex = this.hashArray[index].search(key);
       System.out.println("List index is: " + listIndex);
-      this.hashArray[index].remove(listIndex);
       // remove node containing key
+      this.hashArray[index].remove(listIndex);
       System.out.println(key + " has been removed");
     }
   }
