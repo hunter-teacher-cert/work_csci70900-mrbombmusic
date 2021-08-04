@@ -10,7 +10,7 @@ public class Hash {
   public Hash(int arraySize) {
     hashArray = new Llist[arraySize];
     for(int i = 0; i < arraySize; i++) {
-    hashArray[i] = new Llist();
+      hashArray[i] = new Llist();
     }
   }
 
@@ -38,6 +38,8 @@ public class Hash {
     return true;
   }
 
+  // Modified hash function from example given in class
+  // based on this post: https://stackoverflow.com/questions/2624192/good-hash-function-for-strings
   private int hashFunc(String key){
     int sum = 0;
     for(int i = 0; i < key.length(); i++){
@@ -56,13 +58,13 @@ public class Hash {
     int hashLength = this.hashArray.length;
     for(int i = 0; i < hashLength; i++){
       for(int j = 0; j < this.hashArray[i].length(); j++) {
-      if(this.hashArray[i].length() > 0) {
-        keyRef = "Key: " + this.hashArray[i].getNode(j).getKeyData() +
-        " | Value: " + this.hashArray[i].getNode(j).getValueArray();
-        result = result + keyRef + "\n" + "\n";
+        if(this.hashArray[i].length() > 0) {
+          keyRef = "Key: " + this.hashArray[i].getNode(j).getKeyData() +
+          " | Value: " + this.hashArray[i].getNode(j).getValueArray();
+          result = result + keyRef + "\n" + "\n";
+        }
       }
     }
-  }
     return result;
   }
 
@@ -74,9 +76,9 @@ public class Hash {
       int listIndex = list.search(key);
       list.getNode(listIndex).addValueData(value);
     }  else {
-        list.addFront(key, value, hashCode);
-      }
+      list.addFront(key, value, hashCode);
     }
+  }
 
   public boolean hasKey(String key){
     int hashCode = this.hashFunc(key);
@@ -109,11 +111,11 @@ public class Hash {
     } else {
       int listIndex = list.search(key);
       value = list.getNode(listIndex).getValueData();
-  }
+    }
     return value;
   }
 
-public ArrayList<String> getAllValues(String key) {
+  public ArrayList<String> getAllValues(String key) {
     int hashCode = this.hashFunc(key);
     int index = this.hashIndex(hashCode);
     Llist list = this.hashArray[index];
@@ -124,7 +126,7 @@ public ArrayList<String> getAllValues(String key) {
     while(valueNode == null) {
       int listIndex = list.search(key);
       valueNode = list.getNode(listIndex);
-  }
+    }
     return valueNode.getValueArray();
   }
 

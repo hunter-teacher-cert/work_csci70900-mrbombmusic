@@ -41,7 +41,7 @@ public class Driver {
     try {
       File myObj = new File(path);
       Scanner myReader = new Scanner(myObj);
-      String lastWord = "";
+      String lastWord = " ";
        while (myReader.hasNextLine()) {
         String data = myReader.nextLine();
         String cleanData = data.replaceAll("!|,|-|", ""); // shown by Lyuba
